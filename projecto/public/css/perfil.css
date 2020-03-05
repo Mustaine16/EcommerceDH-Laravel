@@ -1,0 +1,64 @@
+/* LISTA DE OPCIONES DE PERFIL */
+main ul {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  color: white;
+  height: 40px;
+}
+
+/* Links */
+
+main ul li {
+  width: 33%;
+}
+
+main ul li a.active {
+  color: whitesmoke;
+  background: var(--navbar);
+}
+
+main ul li a {
+  display: block;
+  height: 100%;
+  width: 100%;
+  line-height: 40px;
+  color: black;
+  border: 1px solid gray;
+  text-align: center;
+}
+
+.inputs-f {
+  border: none;
+  padding: 10px 2px;
+  box-shadow: 0 0 10px -1px rgba(0, 0, 0, 0.048);
+  border-radius: 5px;
+}
+
+input.btn {
+  display: block;
+  margin-left: auto;
+  margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+  #form-container {
+    width: 50%;
+    margin: auto;
+  }
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  #form-container {
+    width: 40%;
+    margin: auto;
+  }
+}
+
+@media (min-width: 1366px) {
+  #form-container {
+    width: 30%;
+    margin: auto;
+  }
+}

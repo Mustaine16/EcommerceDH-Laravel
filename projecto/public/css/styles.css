@@ -1,0 +1,119 @@
+/* Normalize */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+
+/* Variables css para los colores */
+:root {
+  --body-background: #fcfcfc;
+  --link-details: #6e4dbe;
+  --violeta-claro: #9765be;
+  --navbar: rgb(121, 35, 200);
+  --cards-box-shadow: rgba(0, 0, 0, 0.08) 0 2px 4px 0;
+  --cards-background: #ffffff;
+  --card-border-radius: 4px;
+  --link-border-radius: 15px;
+}
+
+/* TITULOS GENERALES */
+
+h1 {
+  color: var(--violeta-claro);
+  border-bottom: 1px solid var(--violeta-claro);
+  font-size: 1.5rem;
+  padding: 0.3em 0;
+}
+
+/* BODY */
+
+body {
+  background-color: var(--body-background);
+}
+
+/* -----HEADER ----- */
+
+nav {
+  background: var(--navbar);
+  z-index: 999;
+  /* position: fixed !important; */
+  top: 0;
+  width: 100%;
+}
+
+.nav-link,
+.perfil__menu-desplegable a {
+  transition: all 0.2s;
+  font-family: "Alata", sans-serif;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: whitesmoke;
+}
+
+/* Dropdwon del Usuario */
+
+.perfil__menu-desplegable {
+  width: 50%;
+  left: 25%;
+  text-align: center;
+}
+
+.dropdown-toggle::after {
+  border-top: 0.3em solid whitesmoke !important;
+}
+
+.logo__brand {
+  transition: transform 0.2s;
+}
+.logo__brand:hover {
+  transform: scale(1.1, 1.1);
+}
+
+/* Boton de ir a catalogo, solo es visible en el Home */
+
+.button_catalogo {
+  display: none;
+}
+
+/* Fix height en FAQ, CONTACTO,LOGIN Y REGISTRO */
+
+.fix-height {
+  min-height: 80vh;
+}
+
+/* PERFIL, CUENTA Y CAMBIAR PASSWORD */
+
+.confirmar-cambios {
+  background: #bceebc;
+  border: 1px solid #40d940;
+  text-align: center;
+  border-radius: 10px;
+  padding: 0.3em;
+  width: 70%;
+  margin: auto;
+}
+
+.confirmar-cambios p {
+  margin: 0;
+}
+
+/*---------- QUERIES-------- */
+
+@media screen and (min-width: 768px) {
+  /* Menu desplegable del perfil */
+
+  .perfil__icon {
+    margin-left: auto;
+  }
+
+  .perfil__menu-desplegable {
+    left: -66px;
+  }
+}

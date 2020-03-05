@@ -1,0 +1,56 @@
+/* h1 {
+  color: var(--violeta-claro);
+  border-bottom: 1px solid var(--violeta-claro);
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+  text-decoration: underline;
+}
+
+@media (max-width: 575px) {
+  section {
+    font-size: 0.8rem;
+  }
+  h1 {
+    font-size: 1.2rem;
+  }
+  section h2 {
+    font-size: 1rem;
+  }
+} */
+
+ul{
+  display: flex;
+  flex-direction: column;
+}
+
+li{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: center;
+  align-items: center;
+  padding: 1em .3em;
+  margin-top: .5em;
+  border-radius: 14px;
+  background-color: white;
+  box-shadow: 0 0 2px -1px rgba(19, 19, 19, 0.753);
+}
+
+li .producto_datos, li .actions_container{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li .actions_container{
+  padding: 10px 0;
+}
+
+li p{
+  margin: 0;
+}
