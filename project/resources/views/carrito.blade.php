@@ -25,12 +25,25 @@
                         <span class="cantidad">3</span>
                         <button>+</button>
                     </div>
-                    <button class="btn btn-danger">eliminar</button>
+                    <form class="" action="/usuario/carrito/dropItem" method="post">
+                      @csrf
+                      {{-- {{ dd($producto->carrito()->find()->id)}} --}}
+                      {{-- <input type="hidden" name="id_usuario" value="{{}}"> --}}
+                      <input type="hidden" name="id_producto" value="{{$producto->id}}">
+                      <input type="hidden" name="_method" value="DELETE">
+                      <button type="submit" class="btn btn-danger">eliminar</button>
+
+                    </form>
                 </div>
             </li>
             @endforeach
         </ul>
-
+        <form class="" action="/usuario/carrito/comprar" method="get">
+          @csrf
+          <button type="submit" class="btn btn-success">
+            Realizar compra
+          </button>
+        </form>
     </section>
 
 @endsection

@@ -79,6 +79,7 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
        $usuario = User::find($id);
+       //validar
        $usuario->nombre = $request['nombre'];
        $usuario->apellido = $request['apellido'];
        $usuario->direccion =$request['direccion'];

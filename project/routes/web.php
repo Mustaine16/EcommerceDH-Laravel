@@ -102,3 +102,12 @@ Route::get("/contacto", function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/usuario/carrito/comprar','CarritoController@comprar');
+Route::get('/usuario/carrito/finCompra','CarritoController@finCompra');
+
+//aniadir a producto a carrito
+Route::put('/usuario/carrito/addItem','CarritoController@store');
+//eliminar
+Route::delete('/usuario/carrito/dropItem','CarritoController@destroy');
+//comprar

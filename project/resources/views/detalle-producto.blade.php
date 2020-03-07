@@ -17,9 +17,15 @@
         <div class="producto__vender-container">
           <h2 class="producto__nombre">{{$producto->nombre}}</h2>
           <p class="producto__precio">$ {{number_format($producto->precio)}}</p>
-          <button class="producto__carrito">
-            + Añadir al carrito
-          </button>
+          <form class="" action="/usuario/carrito/addItem" method="post">
+            @csrf
+            <input type="hidden" name="_method" value="PUT">
+            <input type="hidden" name="id_producto" value="{{$producto->id}}">
+            <button type="submit" class="producto__carrito">
+              + Añadir al carrito
+            </button>
+          </form>
+
         </div>
         <div class="producto__detalles">
           <h3>Detalles</h3>

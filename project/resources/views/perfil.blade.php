@@ -35,7 +35,7 @@
       <div class="d-flex flex-column">
         <label for="nombre">Nombre</label>
         <input class="inputs-f" type="text" name="nombre" placeholder="Introduce tu nombre"
-    value="{{$usuario->nombre}}">
+    value="{{ $usuario->nombre }}">
         <!-- ACA VA LA PERSISTENCIA -->
         <span class="text-danger"><?= isset($errores["nombre"]) ? $errores["nombre"] : ""; ?></span>
       </div>
