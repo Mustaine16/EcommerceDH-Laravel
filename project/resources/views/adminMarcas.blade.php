@@ -23,6 +23,13 @@
         </div>
     @endif
 
+    <!-- Mensaje de error en baja -->
+    @if(session()->has('errorBaja'))
+      <div class="alert alert-danger">
+        <p>{{session()->get('errorBaja')}}</p>
+      </div>
+    @endif
+
     <a class="btn btn-success mb-3 d-block ml-auto p-3" href="/marca/agregar">Agregar nueva marca</a>
     <table class="table">
         <thead>
@@ -42,7 +49,7 @@
                 <td>
                     {{$marca->nombre}}
                 </td>
-                <td class="acciones">                
+                <td class="acciones">
                     <a href="/marca/{{$marca->id}}/editar" class="btn btn-success d-inline-block">Editar</a>
                      <form action="/marca/{{$marca->id}}/borrar" method="post">
                         {{csrf_field()}}

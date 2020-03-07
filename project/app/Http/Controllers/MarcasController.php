@@ -122,8 +122,16 @@ class MarcasController extends Controller
     public function destroy($id)
     {
       $marca = Marca::find($id);
+      //hay al menos un producto con esa marca, entonces no se puede eliminar
+      if($marca->productos()->count() !== 0){
 
+        $mensajeErroEliminarMarca = "No se puede eliminar la marca $marca->nombre porque hay productos relacionados.";
 
+        session()->flash('errorBaja', $mensajeErroEliminarMarca);
+        return redirect()->back();
+
+      }
+     //la marca se puede eliminar
       $marca->delete();
       return redirect('/marca/admin')->with('mensajeEliminacion', 'Marca: ' . $marca->nombre . ' eliminada correctamente');;
     }
