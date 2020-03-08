@@ -1,0 +1,11 @@
+
+.marcas_container{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 7px;
+  padding: 1em;
+}
+
+h1 {
+  grid-column: 1/-1;
+}

@@ -13,18 +13,20 @@ class MarcasController extends Controller
      */
      public function index()
      {
-         $marcas = Marca::all();
+        $marcas = Marca::all();
 
-         $vac = compact("marcas");
+        $vac = compact("marcas");
 
-             return view("adminMarcas", $vac);
+        return view("adminMarcas", $vac);
 
      }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
       return view("agregarMarca");
@@ -67,7 +69,19 @@ class MarcasController extends Controller
      */
     public function show($id)
     {
-        //
+        $marca = Marca::find($id);
+
+        if($marca){
+          
+          $productos = $marca->productos;
+
+          $vac = compact('productos');
+
+          return view("catalogo", $vac);
+
+        }else{
+          abort(404, 'Page not found');
+        }
     }
 
     /**
@@ -142,11 +156,8 @@ class MarcasController extends Controller
     public function directory()
     {
         $marcas = Marca::all();
-        $imagenes =[
-          "samsung",'lg','motorola','xiaomi','google','apple'
-        ];
-        $vac = compact("marcas");
 
+        $vac = compact("marcas");
 
         return view("catalogoMarcas", $vac);
 

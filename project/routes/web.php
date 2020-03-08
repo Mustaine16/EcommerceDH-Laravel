@@ -75,6 +75,8 @@ Route::get("/detalle-producto/{id}", "ProductosController@show");
 
 Route::get('/catalogo/marcas',"MarcasController@directory");
 
+Route::get('/catalogo/marcas/{id}',"MarcasController@show");
+
 /*
 * Vistas Estaticas
 */
