@@ -99,14 +99,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //  carritou
 //compra
-Route::get('/usuario/carrito/comprar','CarritoController@comprar');
+Route::get('/usuario/carrito/comprar','CarritoController@comprar')->middleware('auth');
 //paga
-Route::get('/usuario/carrito/finCompra','CarritoController@finCompra');
+Route::get('/usuario/carrito/finCompra','CarritoController@finCompra')->middleware('auth');
 
 //aniadir a producto a carrito
-Route::put('/usuario/carrito/addItem','CarritoController@store');
+Route::put('/usuario/carrito/addItem','CarritoController@store')->middleware('auth');
 //eliminar
-Route::delete('/usuario/carrito/dropItem','CarritoController@destroy');
+Route::delete('/usuario/carrito/dropItem','CarritoController@destroy')->middleware('auth');
 
 //contacto
 Route::get('/contacto','ContactoController@contacto');

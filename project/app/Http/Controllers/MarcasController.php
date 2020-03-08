@@ -142,8 +142,11 @@ class MarcasController extends Controller
     public function directory()
     {
         $marcas = Marca::all();
-
+        $imagenes =[
+          "samsung",'lg','motorola','xiaomi','google','apple'
+        ];
         $vac = compact("marcas");
+
 
         return view("catalogoMarcas", $vac);
 
