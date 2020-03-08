@@ -53,9 +53,6 @@ Route::post("/marca/{id}/borrar", "MarcasController@destroy")->middleware('verif
  * Vistas Perfil de usuario
  */
 
-// Route::get("/perfil", function () {
-//     return view("perfil");
-// })->middleware('auth');
 Route::get("/perfil", "UsersController@edit")->middleware('auth');
 
 Route::put('/perfil/{id}','UsersController@update');
@@ -91,9 +88,6 @@ Route::get("/faq", function () {
     return view("faq");
 });
 
-Route::get("/contacto", function () {
-    return view("contacto");
-});
 // prueba de usar una api
 //API
 //  Route::get('/productosExternos','ProductosController@productosExternos');
@@ -103,11 +97,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//  carritou
+//compra
 Route::get('/usuario/carrito/comprar','CarritoController@comprar');
+//paga
 Route::get('/usuario/carrito/finCompra','CarritoController@finCompra');
 
 //aniadir a producto a carrito
 Route::put('/usuario/carrito/addItem','CarritoController@store');
 //eliminar
 Route::delete('/usuario/carrito/dropItem','CarritoController@destroy');
-//comprar
+
+//contacto
+Route::get('/contacto','ContactoController@contacto');
+Route::post('/contacto','ContactoController@procesarContacto');

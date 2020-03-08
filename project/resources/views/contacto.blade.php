@@ -7,13 +7,22 @@
 @section("title", "Contacto")
 
 @section("main")
+  @if ($errors->any())
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+  @endif
   <section class="container p-3 fix-height">
     <h1>Contactanos</h1>
     <!-- esto envuelve al formulario -->
     <article class="container container-fluid" id="form-container">
-    
-      <form action="contacto.php" method="post">
 
+      <form action="/contacto" method="post">
+        @csrf
         <div class="form-group">
           <label for="nombre">Nombre</label>
           <input
@@ -21,7 +30,7 @@
             id="nombre"
             class="form-control text-input"
             name="nombre"
-            value=""
+            value="{{old('nombre')}}"
           />
         </div>
 
@@ -32,7 +41,7 @@
             class="form-control text-input"
             id="apellido"
             name="apellido"
-            value=""
+            value="{{old('apellido')}}"
           />
         </div>
 
@@ -43,7 +52,7 @@
             id="email"
             class="form-control email-input"
             name="email"
-            value=""
+            value="{{old('email')}}"
           />
         </div>
 
@@ -54,7 +63,7 @@
             id="telefono"
             class="form-control password-input"
             name="telefono"
-            value=""
+            value="{{old('telefono')}}"
           />
         </div>
 
@@ -69,5 +78,6 @@
 
       </form>
     </article>
+
   </section>
 @endsection
