@@ -66,16 +66,15 @@ Route::get("/seguridad", function () {
 })->middleware('auth');
 
 /**
- * Vista de Catalogo,Detalles de Productos, Carrito
+ * Vista de Catalogo, Detalles de Productos 
  */
 
 Route::get('/catalogo', "ProductosController@index");
 
 Route::get("/detalle-producto/{id}", "ProductosController@show");
 
-Route::get('/carrito', 'UsersController@showCarrito');
-
 Route::get('/catalogo/marcas',"MarcasController@directory");
+
 /*
 * Vistas Estaticas
 */
@@ -97,17 +96,27 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//  carritou
-//compra
+/**
+ * CRUD Carrito
+ */
+
+
+Route::get('/carrito', 'UsersController@showCarrito');
+
+//Añadir a producto a carrito
+Route::put('/usuario/carrito/addItem','CarritoController@store')->middleware('auth');
+
+//Comprar
 Route::get('/usuario/carrito/comprar','CarritoController@comprar')->middleware('auth');
-//paga
+
+//Pagar
 Route::get('/usuario/carrito/finCompra','CarritoController@finCompra')->middleware('auth');
 
-//aniadir a producto a carrito
-Route::put('/usuario/carrito/addItem','CarritoController@store')->middleware('auth');
-//eliminar
+//Eliminar
 Route::delete('/usuario/carrito/dropItem','CarritoController@destroy')->middleware('auth');
 
-//contacto
+/**
+ * Contacto
+ */
 Route::get('/contacto','ContactoController@contacto');
 Route::post('/contacto','ContactoController@procesarContacto');

@@ -29,7 +29,7 @@
             <div class="form-group">
                 <label for="nombre">Nombre marca</label>
                 <input type="text" class="form-control" id="nombre" aria-describedby="NombreProducto"
-                    placeholder="Nombre marca ej: garchPhone" name="nombre" value="{{old('nombre')}}" />
+                    placeholder="Nombre marca" name="nombre" value="{{old('nombre')}}" />
             </div>
             {{-- <div class="form-group">
                 <label for="id_marca">Marca</label>
