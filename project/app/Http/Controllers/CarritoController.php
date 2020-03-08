@@ -35,9 +35,9 @@ class CarritoController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request['id_producto']);
+
         $usuario = Auth::user();
-        // dd($usuario->nombre);
+
         $carrito = new \App\Carrito();
         $carrito->id_producto = $request['id_producto'];
         $carrito->id_usuario= $usuario->id;
@@ -103,12 +103,23 @@ class CarritoController extends Controller
     }
 
     //realizar la comprar
+    //
     public function comprar(){
       // $usuario = Auth::user();
       return view('realizarCompra');
 
     }
     public function finCompra(){
-        return redirect('/catalogo');
+
+      $user = Auth::user();
+
+        $productos = \App\Carrito::where('id_usuario','=',$user->id)->get(['id']);
+        \App\Carrito::destroy($productos->toArray());
+
+        $compraOK='la compra se ha realizado con exitus';
+        return view('carrito',[
+          "compraOK" => $compraOK
+        ]);
+
     }
 }
