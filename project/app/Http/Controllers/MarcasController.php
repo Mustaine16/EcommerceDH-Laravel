@@ -73,7 +73,7 @@ class MarcasController extends Controller
 
         if($marca){
           
-          $productos = $marca->productos;
+          $productos = $marca->productos()->paginate(4);
 
           $vac = compact('productos');
 

@@ -24,5 +24,6 @@
           </div>
         </article>
         @endforeach
+        {{$productos->links()}}
     </section>
 @endsection

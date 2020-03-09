@@ -13,9 +13,8 @@ class ProductosController extends Controller
 {
     public function index()
     {
-        $productos = Producto::all();
-        ($productos);
-        // dd($productos);
+        $productos = Producto::paginate(4);
+
         $vac = compact("productos");
 
         if (\Request::is('catalogo')) {
