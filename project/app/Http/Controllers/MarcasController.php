@@ -13,7 +13,7 @@ class MarcasController extends Controller
      */
      public function index()
      {
-        $marcas = Marca::all();
+        $marcas = Marca::paginate(4);
 
         $vac = compact("marcas");
 

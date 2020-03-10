@@ -60,5 +60,6 @@
             @endforeach
         </tbody>
     </table>
+    {{$marcas->links()}}
 </main>
 @endsection

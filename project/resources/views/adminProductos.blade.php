@@ -56,5 +56,6 @@
             @endforeach
         </tbody>
     </table>
+    {{$productos->links()}}
 </main>
 @endsection

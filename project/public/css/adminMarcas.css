@@ -7,6 +7,14 @@ td.acciones form button{
   width: 100%;
 }
 
+/* Paginacion */
+
+ul.pagination {
+  grid-column: 1/-1;
+  justify-content: center;
+  margin-top: 1em;
+}
+
 @media screen and (min-width:768px){
 
   td.acciones{
