@@ -51,6 +51,13 @@ class User extends Authenticatable
     public function carrito(){
         return $this->belongsToMany('App\Producto', 'carritos', 'id_usuario', 'id_producto');
     }
+
+        /**
+     * Relacion N:M para generar las compras
+     */
+    public function compras(){
+        return $this->belongsToMany('App\Producto', 'compras', 'id_usuario', 'id_producto');
+    }
 }
 
 

@@ -7,6 +7,16 @@
 @section("title", "Detalles Producto")
 
 @section("main")
+    <!-- Mensaje de avisando que el producto ya estaba añadido en el carrito -->
+  @if( session()->has('mensaje') )
+  <div class="alert alert-warning alert-dismissible fade show">
+  {{ session()->get('mensaje') }} <a href="/carrito">carrito</a>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  @endif
+
   <section class="container pt-2 mb-2">
       <article class="producto__container p-2">
         <!-- Imagen del producto -->
@@ -16,7 +26,7 @@
         <!-- Nombre, precio y añadir la carrito -->
         <div class="producto__vender-container">
           <h2 class="producto__nombre">{{$producto->nombre}}</h2>
-          <p class="producto__precio">$ {{number_format($producto->precio)}}</p>
+          <p class="producto__precio">$ {{number_format($producto->precio,0,"",".")}}</p>
           <form class="" action="/usuario/carrito/addItem" method="post">
             @csrf
             <input type="hidden" name="_method" value="PUT">

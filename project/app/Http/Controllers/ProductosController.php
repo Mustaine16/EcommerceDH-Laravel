@@ -147,25 +147,24 @@ class ProductosController extends Controller
 
             $imagenVieja = $producto->imagen;
 
-            //Se verifica que no sea la imagen de stock
-            if($imagenVieja != 'no-image.jpg'){
-                \File::delete($imagenVieja);
-            }
-
             //Se guarda la imagen en Public y BBDD
             $imagenOrigin = $request->imagen->getClientOriginalName(); //Nombre original de la imagen
             $imagenExt = $request->imagen->getClientOriginalExtension(); //Extension de la imagen
             $imagenNombre = uniqid() . "." . $imagenExt; //Nombre a guardar en BBDD
             $producto->imagen = $imagenNombre;
             $request->imagen->move(public_path('img/productos'), $imagenNombre);
-            } else {
-                $producto->imagen = 'no-image.jpg';
+
+            
+            //Se verifica que no sea la imagen de stock
+            if($imagenVieja != 'no-image.jpg'){
+                \File::delete('img/productos/' . $imagenVieja);
             }
-
-            $producto->save();
-            return redirect("/producto/admin")->with('mensajeExito', 'Producto: ' . $producto->nombre . ' editado correctamente');;
+            
+        }
+        
+        $producto->save();
+        return redirect("/producto/admin")->with('mensajeExito', 'Producto: ' . $producto->nombre . ' editado correctamente');
     }
-
 
 
 

@@ -9,7 +9,8 @@ class Carrito extends Model
     public $timestamps = false;
 
     public $guarded = [];
-    public function producto(){
+
+    public function usuario(){
       return $this->belongsToMany('App\User', 'carritos', 'id_usuario', 'id_producto');
-  }
+    }
 }

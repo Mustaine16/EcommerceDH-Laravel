@@ -115,7 +115,7 @@ Route::get('/usuario/carrito/comprar','CarritoController@comprar')->middleware('
 Route::get('/usuario/carrito/finCompra','CarritoController@finCompra')->middleware('auth');
 
 //Eliminar
-Route::delete('/usuario/carrito/dropItem','CarritoController@destroy')->middleware('auth');
+Route::get('/usuario/carrito/dropItem/{id}','CarritoController@destroy')->middleware('auth');
 
 /**
  * Contacto

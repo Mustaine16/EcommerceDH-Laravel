@@ -7,11 +7,11 @@
 @section("title", "Carrito")
 
 @section("main")
-<section class="container fix-height">
+<section class="container_ fix-height">
 
-  <h1 class="pl-3">Tu Carrito</h1>
+  <h1 class="titulo">Tu Carrito</h1>
 
-  {{-- mostrar mensaje si la compra salio tudo bom --}}
+  <!--mostrar mensaje si la compra salio tudo bom -->
 
   @if(isset($compraOK))
     <div class="alert alert-success alert-dismissible fade show">
@@ -20,55 +20,53 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
+  @endif
 
-  @elseif($carrito)
+  <!-- Mostar listado de productos -->
+  @if(isset($carrito) && count($carrito) >= 1 && !isset($compraOK) )
 
-    @forelse ($carrito as $producto)
+    <!-- Formulario de compra -->
+    <form class="form-compra" action="/usuario/carrito/comprar" method="get">
+      @csrf
+
       <ul>
-        <li>
-            <div class="producto_datos">
-                <img src="{{asset('img/productos/'. $producto->imagen)}}" alt="producto" width="40px">
-                <p class="producto_nombre">{{$producto->nombre}}</p>
-                <p class="producto_precio">$ {{$producto->precio}}</p>
+        @foreach($carrito as $producto)
+          <li class="producto_datos">
+            <img src="{{asset('img/productos/'. $producto->imagen)}}" alt="producto" width="50px"/>
+            <div class="producto_nombre-marca-container">
+              <a href="/detalle-producto/{{$producto->id}}" class="producto_nombre" aria-label="nombreProducto">{{$producto->nombre}}</a>
+              <small class="producto_marca" aria-label="marca">{{$producto->marca->nombre}}</small>
             </div>
-            <div class="actions_container">
-                <div class="contador">
-                    <p>cantidad</p>
-                    <form class="" action="index.html" method="post">
-                      <input type="number" id="quantity" name="cantidad" min="1" max="5" value=1>
-                    </form>
-                </div>
-                <form class="" action="/usuario/carrito/dropItem" method="post">
-                  @csrf
-                  <input type="hidden" name="id_producto" value="{{$producto->id}}">
-                  <input type="hidden" name="_method" value="DELETE">
-                  <button type="submit" class="btn btn-danger">eliminar</button>
-                </form>
-            </div>
-        </li>
+              <select name="cantidad_{{$producto->id}}" id="cantidad">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            <p class="producto_precio" aria-label="precio">$ {{number_format($producto->precio,0,"",".")}}</p>
+            <a href="/usuario/carrito/dropItem/{{$producto->id}}" class="btn btn-danger">X</a>
+          </li>
+        @endforeach
       </ul>
 
-      @empty
-        <div class="carrito-vacio-card">
-          <img class="m-auto" src="{{asset('img/carrito-vacio.png')}}" alt="carrito vacio" width="240px">
-          <h2 class="text-center">Tu carrito se encuentra vacío</h2>
-          <a href="/catalogo" class="boton boton-back"><i class="fas fa-arrow-left"></i> Seguir comprando</a>
-        </div>
-         
-    @endforelse
+      <section class="resumen">
+        <h5>Resumen de compra</h5>
+        <p>Precio Final: $ {{number_format($subtotal,0,"",".")}}</p>
+        <a href="/catalogo" class="boton boton-back"><i class="fas fa-arrow-left"></i> Seguir comprando</a>      
+        <button type="submit" class="btn btn-success boton">Realizar compra</button>
+      </section>
 
-    @if(!isset($compraOK) && $carrito->count()!=0)
-      <form class="comprar" action="/usuario/carrito/comprar" method="get">
-        @csrf
-        {{-- <input type="hidden" name="" value=""> --}}
-          <a href="/catalogo" class="boton boton-back"><i class="fas fa-arrow-left"></i> Seguir comprando</a>
-          <button type="submit" class="btn btn-success boton">
-          Realizar compra
-          </button>
-        @endisset
-      </form>
 
-  @endif
+    </form>
+
+  <!-- Mostrar cartel de Carrito vacio -->
+  @else
+    <div class="carrito-vacio-card">
+      <img class="m-auto" src="{{asset('img/carrito-vacio.png')}}" alt="carrito vacio" width="240px">
+      <h2 class="text-center">Tu carrito se encuentra vacío</h2>
+      <a href="/catalogo" class="boton boton-back"><i class="fas fa-arrow-left"></i> Seguir comprando</a>
+    </div>
+  @endif  
+
 </section>
 
 @endsection

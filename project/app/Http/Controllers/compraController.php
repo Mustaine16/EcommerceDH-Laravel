@@ -1,5 +1,7 @@
 <?php
 
+<?php
+
 namespace App\Http\Controllers;
 use App\User;
 use Auth;
@@ -8,25 +10,12 @@ use Illuminate\Http\Request;
 class UsersController extends Controller
 {
 
-    function showCarrito(){
-        //Vamos a tener un array de productos
-        $carrito = Auth::user()->carrito;
-        //Subtotal temporal, sin contar cantidad de productos
-        // dd($carrito);
-        $subtotal = 0;
-        foreach ($carrito as $producto) {
-            $subtotal += $producto->precio;
-        }
 
-        $vac = compact('carrito', 'subtotal');
-
-        return view('carrito',$vac);
-    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+    */
     public function index()
     {
         //
@@ -72,8 +61,7 @@ class UsersController extends Controller
      */
     public function edit()
     {
-        $usuario=Auth::user();
-        return view('/perfil',compact('usuario'));
+
     }
 
     /**
@@ -83,18 +71,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-       $usuario = User::find($id);
-       //validar
-       $usuario->nombre = $request['nombre'];
-       $usuario->apellido = $request['apellido'];
-       $usuario->direccion =$request['direccion'];
-       $usuario->ciudad =$request['ciudad'];
 
-       $usuario->save();
-
-       return redirect('/perfil');
     }
 
     /**
@@ -108,3 +87,4 @@ class UsersController extends Controller
         //
     }
 }
+

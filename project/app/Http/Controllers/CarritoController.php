@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Producto;
 use App\Carrito;
+use App\Compra;
 use Auth;
 
 class CarritoController extends Controller
@@ -38,13 +39,26 @@ class CarritoController extends Controller
     public function store(Request $request){
 
         $usuario = Auth::user();
+        $usuarioID = $usuario->id;
 
-        $carrito = new Carrito();
-        $carrito->id_producto = $request['id_producto'];
-        $carrito->id_usuario = $usuario->id;
-        $carrito->save();
-        return redirect('/carrito');
+        $productoID = $request['id_producto'];
 
+        $productoEnCarritoDelUsuario = Carrito::where('id_usuario', $usuarioID)->where('id_producto', $productoID)->get();
+
+        if(count($productoEnCarritoDelUsuario)){
+
+            session()->flash('mensaje', 'Este producto ya se encuentra en tu ');
+            return redirect()->back();
+
+        }else{
+
+            $carrito = new Carrito();
+            $carrito->id_producto = $productoID;
+            $carrito->id_usuario = $usuarioID;
+            $carrito->save();
+            return redirect('/carrito');
+
+        }
     }
 
     /**
@@ -89,11 +103,11 @@ class CarritoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $req){
+    public function destroy($id){
    
         $user = Auth::user();
     
-        $producto = Carrito::where('id_producto','=',$req['id_producto'])
+        $producto = Carrito::where('id_producto','=',$id)
                             ->where('id_usuario',"=",$user->id)
                             ->limit(1)->first();
                             //Con el metodo first conseguimos el MODEL en vez de una Collection
@@ -106,17 +120,45 @@ class CarritoController extends Controller
 
     //Realizar la comprar
 
-    public function comprar(){
+    public function comprar(Request $req){
 
-      return view('realizarCompra');
-
-    }
-
-    public function finCompra(){
+        /***************************
+        * 
+        * GUARDAR DATOS EN LA TABLA DE COMPRAS
+        *
+        *****************************/
 
         $user = Auth::user();
-        
-        // Se obtiene la columna ID de cada producto en la tabla carrito que coincida con el ID del usuario logueado
+
+        $productos = $user->carrito;
+
+        //Traemos el array con cantidades, y se elimina el token de la primera posicion
+        $req->flashExcept('_token');
+
+        $cantidadPorProducto = array_values($req->session()->all()["_old_input"]);
+
+        // dd($cantidadPorProducto);
+
+        foreach ($cantidadPorProducto as $i => $cantidad) {
+            $compra = new Compra;
+
+            $compra->id_usuario = $user->id;
+            $compra->id_producto = $productos[$i]->id;
+            $compra->cantidad = $cantidad;
+            $compra->total = $productos[$i]->precio * $cantidad;
+            $compra->fecha = date('d-m-y');
+
+            $compra->save();
+        }
+
+                
+        /***************************
+        * 
+        * BORRAR PRODUCTOS DEL CARRITO
+        *
+        *****************************/
+
+        // Se obtiene la columna ID de cada fila en la tabla carrito que coincida con el ID del usuario logueado
 
         $productosID = Carrito::where('id_usuario','=',$user->id)->get(['id']);
 
@@ -124,10 +166,24 @@ class CarritoController extends Controller
         // El metodo toArray convierte la collection en un array simple
 
         Carrito::destroy($productosID->toArray());
+        
+        $compraOK = 'la compra se ha realizado con exitus';
+        $vac = compact('compraOK');
+        return redirect('/carrito')->with($vac);
+    }
+
+    public function finCompra(){
+
+        $user = Auth::user();
+
+
+
+        $compra = new Compra();
+
+        // $compra->id_usuario = $user->id;
+        // $compra->id_producto = 
       
-        return view('carrito',[
-            "compraOK" => 'la compra se ha realizado con exitus'
-        ]);
+
 
     }
 }
