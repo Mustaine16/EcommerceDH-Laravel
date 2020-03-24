@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 23-03-2020 a las 23:58:21
+-- Tiempo de generación: 24-03-2020 a las 22:07:30
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.2
 
@@ -11,8 +11,6 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -23,8 +21,9 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `ecommerce_dh`
 --
-CREATE DATABASE  IF NOT EXISTS `ecommerce_dh` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE IF NOT EXISTS `ecommerce_dh` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `ecommerce_dh`;
+
 -- --------------------------------------------------------
 
 --
@@ -42,7 +41,8 @@ CREATE TABLE `carritos` (
 --
 
 INSERT INTO `carritos` (`id`, `id_producto`, `id_usuario`) VALUES
-(13, 7, 5);
+(36, 4, 3),
+(37, 7, 3);
 
 -- --------------------------------------------------------
 
@@ -64,13 +64,14 @@ CREATE TABLE `compras` (
 --
 
 INSERT INTO `compras` (`id`, `fecha`, `cantidad`, `id_producto`, `id_usuario`, `total`) VALUES
-(8, '2023-03-20', 1, 5, 5, 37500),
-(9, '2023-03-20', 1, 3, 5, 25999),
-(11, '2023-03-20', 1, 4, 5, 15999),
-(12, '2023-03-20', 1, 5, 5, 37500),
-(13, '2023-03-20', 1, 4, 5, 15999),
-(14, '2023-03-20', 1, 7, 5, 29500),
-(15, '2023-03-20', 2, 7, 5, 59000);
+(31, '2024-03-20', 1, 3, 5, 25999),
+(32, '2024-03-20', 1, 7, 5, 29500),
+(33, '2024-03-20', 1, 5, 5, 37500),
+(34, '2024-03-20', 1, 4, 5, 15999),
+(35, '2024-03-20', 1, 8, 5, 120000),
+(36, '2024-03-20', 1, 13, 5, 218999),
+(37, '2024-03-20', 2, 4, 5, 31998),
+(38, '2024-03-20', 2, 3, 5, 51998);
 
 -- --------------------------------------------------------
 
@@ -80,20 +81,23 @@ INSERT INTO `compras` (`id`, `fecha`, `cantidad`, `id_producto`, `id_usuario`, `
 
 CREATE TABLE `marcas` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(60) DEFAULT NULL
+  `nombre` varchar(60) DEFAULT NULL,
+  `imagen` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `marcas`
 --
 
-INSERT INTO `marcas` (`id`, `nombre`) VALUES
-(1, 'Samsung'),
-(2, 'LG'),
-(3, 'Motorola'),
-(4, 'Xiaomi'),
-(5, 'Google'),
-(6, 'Apple');
+INSERT INTO `marcas` (`id`, `nombre`, `imagen`) VALUES
+(1, 'Samsung', 'Samsung.png'),
+(2, 'LG', 'LG.png'),
+(3, 'Motorola', 'Motorola.png'),
+(4, 'Xiaomi', 'Xiaomi.png'),
+(5, 'Google', 'Google.png'),
+(6, 'Apple', 'Apple.png'),
+(7, 'Huawei', 'Huawei.png'),
+(8, 'Sony', 'Sony.png');
 
 -- --------------------------------------------------------
 
@@ -158,7 +162,7 @@ INSERT INTO `productos` (`id`, `nombre`, `procesador`, `precio`, `imagen`, `sist
 (4, 'Moto E6 Plus', 'Helio P22', 15999, '5e5daa598c489.png', 'Android 9.0', 6.1, 13, 4, 3, 32),
 (5, 'Galaxy S9+', 'Exynos 9810', 37500, '5e5daa75ecc75.png', 'Android 10.0', 6.2, 12, 6, 1, 32),
 (7, 'LG V30', 'Snapdragon 835', 29500, '5e5daa7eddf02.png', 'Android 9.0', 6, 16, 4, 2, 32),
-(8, 'Iphone 11 PRO Max', 'A13 Bionic', 1000000000, '5e5daa85c114f.png', 'iOS 13.3', 6.5, 12, 4, 6, 32),
+(8, 'Iphone 11 PRO Max', 'A13 Bionic', 120000, '5e5daa85c114f.png', 'iOS 13.3', 6.5, 12, 4, 6, 32),
 (13, 'Redmi Note 8 PRO', 'Snapdragon 650', 218999, '5e5daa8f42065.png', 'Android 9', 6.8, 16, 32, 4, 32);
 
 -- --------------------------------------------------------
@@ -252,19 +256,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `carritos`
 --
 ALTER TABLE `carritos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de la tabla `compras`
 --
 ALTER TABLE `compras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `marcas`
 --
 ALTER TABLE `marcas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
