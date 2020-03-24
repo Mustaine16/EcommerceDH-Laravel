@@ -153,12 +153,11 @@ class ProductosController extends Controller
             $imagenNombre = uniqid() . "." . $imagenExt; //Nombre a guardar en BBDD
             $producto->imagen = $imagenNombre;
             $request->imagen->move(public_path('img/productos'), $imagenNombre);
-
             
             //Se verifica que no sea la imagen de stock
-            if($imagenVieja != 'no-image.jpg'){
-                \File::delete('img/productos/' . $imagenVieja);
-            }
+            // if($imagenVieja != 'no-image.jpg'){
+            //     \File::delete('img/productos/' . $imagenVieja);
+            // }
             
         }
         

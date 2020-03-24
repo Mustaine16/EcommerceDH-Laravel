@@ -41,19 +41,30 @@ class MarcasController extends Controller
     public function store(Request $request)
     {
       $reglas = [
-        "nombre" => "required"
+        "nombre" => "required",
+        "imagen" => "required|file"
       ];
 
       $mensajes = [
-          "required" => "El campo :attribute es obligatorio perri."
+          "required" => "El campo :attribute es obligatorio",
+          "file" => "El archivo debe ser una imagen"
       ];
 
       $this->validate($request, $reglas, $mensajes);
 
-
       $marca = new Marca();
 
       $marca->nombre = $request["nombre"];
+      
+      if ($request->file("imagen")) {
+        $imagenExt = $request->imagen->getClientOriginalExtension(); //Extension de la imagen
+        $imagenNombre = $request["nombre"] . "." . $imagenExt; //Nombre a guardar en BBDD
+        $marca->imagen = $imagenNombre;
+        $request->imagen->move(public_path('img/productos/logos/'), $imagenNombre);
+      } else {
+        $marca->imagen = 'no-image.jpg';
+      }
+
 
 
       $marca->save();
@@ -108,11 +119,13 @@ class MarcasController extends Controller
     public function update(Request $request, $id)
     {
       $reglas = [
-        "nombre" => "required"
+        "nombre" => "required",
+        "imagen" => "file"
       ];
 
       $mensajes = [
-          "required" => "El campo :attribute es obligatorio maestro."
+          "required" => "El campo :attribute es obligatorio",
+          "file" => "El archivo debe ser una imagen"
       ];
 
       $this->validate($request, $reglas, $mensajes);
@@ -120,6 +133,14 @@ class MarcasController extends Controller
       $marca = Marca::find($id);
 
       $marca->nombre = $request["nombre"];
+
+      if ($request->file("imagen")) {
+        //Se guarda la imagen en Public y BBDD
+        $imagenExt = $request->imagen->getClientOriginalExtension(); //Extension de la imagen
+        $imagenNombre = $request["nombre"] . "." . $imagenExt; //Nombre a guardar en BBDD
+        $marca->imagen = $imagenNombre;
+        $request->imagen->move(public_path('img/productos/logos/'), $imagenNombre);  
+      }
 
       $marca->save();
 

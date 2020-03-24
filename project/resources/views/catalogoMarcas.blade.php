@@ -16,7 +16,7 @@
        @foreach ($marcas as $marca)
        <a href="/catalogo/marcas/{{$marca->id}}" class="product__card">
           <figure>
-            <img src="/img/productos/logos/{{$marca->nombre}}.png" class="img-thumbnail" alt="" class="product__img" />
+            <img src="/img/productos/logos/{{$marca->imagen}}" class="img-thumbnail" alt="" class="product__img" />
           </figure>
 
         </a>
