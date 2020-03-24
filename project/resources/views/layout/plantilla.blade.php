@@ -169,6 +169,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/2641c51c10.js" crossorigin="anonymous"></script>
 
+    <!-- Script particular-->
+    @yield("script")
 </body>
 
 </html>

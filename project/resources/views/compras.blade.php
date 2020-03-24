@@ -28,7 +28,7 @@
       @forelse ($compras as $producto)
         <li>
           <img src="{{asset('img/productos/' . $producto->imagen)}}" width="50" alt="">
-          <p>{{$producto->nombre}}</p>
+          <p class="nombre">{{$producto->nombre}}</p>
           <div class="cantidad">
             <small>Cantidad</small>
             <p>{{$producto->pivot->cantidad}}</p>

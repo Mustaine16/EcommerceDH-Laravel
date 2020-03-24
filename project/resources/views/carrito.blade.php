@@ -7,6 +7,7 @@
 @section("title", "Carrito")
 
 @section("main")
+
 <section class="container_ fix-height">
 
   <h1 class="titulo">Tu Carrito</h1>
@@ -26,12 +27,12 @@
               <a href="/detalle-producto/{{$producto->id}}" class="producto_nombre" aria-label="nombreProducto">{{$producto->nombre}}</a>
               <small class="producto_marca" aria-label="marca">{{$producto->marca->nombre}}</small>
             </div>
-              <select name="cantidad_{{$producto->id}}" id="cantidad">
+              <select name="cantidad_{{$producto->id}}" data-id={{$producto->id}}>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
               </select>
-            <p class="producto_precio" aria-label="precio">$ {{number_format($producto->precio,0,"",".")}}</p>
+            <p class="producto_precio" aria-label="precio" data-precio={{$producto->precio}} data-subtotal={{$producto->precio}}>$ {{number_format($producto->precio,0,"",".")}}</p>
             <a href="/usuario/carrito/dropItem/{{$producto->id}}" class="btn btn-danger">X</a>
           </li>
         @endforeach
@@ -39,7 +40,7 @@
 
       <section class="resumen">
         <h5>Resumen de compra</h5>
-        <p>Precio Final: $ {{number_format($subtotal,0,"",".")}}</p>
+        <p id="precioFinal" data-subtotal={{$subtotal}}>Precio Final: $ {{number_format($subtotal,0,"",".")}}</p>
         <a href="/catalogo" class="boton boton-back"><i class="fas fa-arrow-left"></i> Seguir comprando</a>      
         <button type="submit" class="btn btn-success boton">Realizar compra</button>
       </section>
@@ -58,4 +59,8 @@
 
 </section>
 
+@endsection
+
+@section("script")
+<script src="{{asset('js/carrito.js')}}" ></script>
 @endsection

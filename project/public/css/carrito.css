@@ -34,6 +34,8 @@
 }
 
 .producto_precio {
+    width: 94px;
+    text-align: center;
     font-weight: 600;
     align-self: flex-end;
     background: #e5e5e4;
@@ -114,7 +116,7 @@ li small{
     outline: none;
 }
 
-select#cantidad {
+select {
     background: #5b575f;
     border-radius: 33px;
     color: white;
