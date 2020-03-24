@@ -147,7 +147,6 @@ class CarritoController extends Controller
             $compra->cantidad = $cantidad;
             $compra->total = $productos[$i]->precio * $cantidad;
             $compra->fecha = date('d-m-y');
-
             $compra->save();
         }
 
@@ -168,8 +167,9 @@ class CarritoController extends Controller
         Carrito::destroy($productosID->toArray());
         
         $compraOK = 'la compra se ha realizado con exitus';
-        $vac = compact('compraOK');
-        return redirect('/carrito')->with($vac);
+        $vac = compact('compraOK','productos');
+        // dd($vac);
+        return redirect('/compras')->with('compraOK', 'Su compra se ha realizado con exito');
     }
 
     public function finCompra(){

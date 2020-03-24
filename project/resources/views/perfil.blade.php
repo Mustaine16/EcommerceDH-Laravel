@@ -14,6 +14,7 @@
     <li><a href="/perfil" class="active">Perfil</a></li>
     <li><a href="/cuenta">Cuenta</a></li>
     <li><a href="/seguridad">Seguridad</a></li>
+    <li><a href="/compras">Compras</a></li>
   </ul>
 
   <!-- CARTEL PARA CONFIRMAR QUE LOS CAMBIOS FUERON GUARDADOS -->

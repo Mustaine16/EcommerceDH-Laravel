@@ -56,7 +56,7 @@ class User extends Authenticatable
      * Relacion N:M para generar las compras
      */
     public function compras(){
-        return $this->belongsToMany('App\Producto', 'compras', 'id_usuario', 'id_producto');
+        return $this->belongsToMany('App\Producto', 'compras', 'id_usuario', 'id_producto')->withPivot(['cantidad','total','fecha']);
     }
 }
 

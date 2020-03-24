@@ -1,24 +1,30 @@
 <?php
 
-<?php
-
 namespace App\Http\Controllers;
-use App\User;
-use Auth;
+
 use Illuminate\Http\Request;
 
-class UsersController extends Controller
+use Auth;
+use App\Compra;
+
+class ComprasController extends Controller
 {
-
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-    */
+     */
     public function index()
     {
-        //
+        $user = Auth::user();
+        
+        $compras = $user->compras->reverse();
+        // $da = array_reverse($co)
+        $vac = compact('compras');
+
+        return view('compras', $vac);
+
+
     }
 
     /**
@@ -59,9 +65,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-
+        //
     }
 
     /**
@@ -71,9 +77,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-
+        //
     }
 
     /**
@@ -87,4 +93,3 @@ class UsersController extends Controller
         //
     }
 }
-

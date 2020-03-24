@@ -65,6 +65,8 @@ Route::get("/seguridad", function () {
     return view("seguridad");
 })->middleware('auth');
 
+Route::get('/compras', 'ComprasController@index')->middleware('auth');
+
 /**
  * Vista de Catalogo, Detalles de Productos 
  */

@@ -11,17 +11,6 @@
 
   <h1 class="titulo">Tu Carrito</h1>
 
-  <!--mostrar mensaje si la compra salio tudo bom -->
-
-  @if(isset($compraOK))
-    <div class="alert alert-success alert-dismissible fade show">
-      {{$compraOK}}
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-  @endif
-
   <!-- Mostar listado de productos -->
   @if(isset($carrito) && count($carrito) >= 1 && !isset($compraOK) )
 

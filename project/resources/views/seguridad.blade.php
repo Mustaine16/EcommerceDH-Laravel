@@ -13,6 +13,7 @@
          <li><a href="/perfil">Perfil</a></li>
          <li><a href="/cuenta">Cuenta</a></li>
          <li><a href="/seguridad" class="active">Seguridad</a></li>
+         <li><a href="/compras">Compras</a></li>
       </ul>
 
       <!-- CARTEL PARA CONFIRMAR QUE LOS CAMBIOS FUERON GUARDADOS -->

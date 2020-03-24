@@ -9,12 +9,15 @@ class Producto extends Model
   public $timestamps = false;
   public $guarded = [];
 
-  public function marca()
-  {
+  public function marca(){
       return $this->belongsTo("App\Marca", "id_marca");
   }
 
-  public function carrito(){
+  public function enCarrito(){
     return $this->belongsToMany('App\User', 'carritos', 'id_producto', 'id_usuario');
-}
+  }
+
+  public function compras(){
+    return $this->belongsToMany('App\User','compras','id_producto', 'id_usuario')->withPivot(['cantidad','total']);
+  }
 }
