@@ -64,7 +64,7 @@
                     </a>
 
                     <!-- ehh...magia de laravel? -->
-                    <div class="dropdown-menu perfil__menu-desplegable">   
+                    <div class="dropdown-menu perfil__menu-desplegable">
                         <a class="dropdown-item text-center p-3" href="/producto/admin">Productos</a>
                         <a class="dropdown-item text-center p-3" href="/marca/admin">Marcas</a>
                         <hr>
@@ -77,11 +77,11 @@
                      @csrf
                         </form>
                     </div>
-        
-                  
-                  
-               
-            
+
+
+
+
+
                 @else
 
                  <!-- Si no es admin -->

@@ -14,11 +14,32 @@ class ExampleTest extends DuskTestCase
      *
      * @return void
      */
-    public function testBasicExample()
+    public function testHomeCargaYMuestraBuyit()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
                           ->assertSee('Buy it!');
         });
+    }
+    public function testLinksParaNavegarEnHomeSonVisibles()
+    {
+      $this->browse(function (Browser $browser){
+        $browser->visit('/')
+                    ->assertSeeLink('Home')
+                    ->assertSeeLink('Catálogo')
+                    ->assertSeeLink('Marcas')
+                    ->assertSeeLink('F.A.Q')
+                    ->assertSeeLink('Contacto')
+                    ->assertSeeLink('Login')
+                    ->assertSeeLink('Registrate')
+                    ->assertSeeLink('Entrá al catálogo');
+      });
+    }
+    public function testClickFunciona()
+    {
+      $this->browse(function (Browser $browser){
+        $browser->visit('/')
+                  ->clickLink('Entrá al catálogo');
+      });
     }
 }

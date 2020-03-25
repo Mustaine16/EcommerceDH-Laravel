@@ -78,6 +78,7 @@ class LoginTest extends TestCase
        $this->assertAuthenticatedAs($user);
    }
 */
+/*
    public function test_user_receives_an_email_with_a_password_reset_link()
   {
       Notification::fake();
@@ -95,5 +96,7 @@ Notification::assertSentTo($user, ResetPassword::class, function ($notification,
     return Hash::check($notification->token, $token->token) === true;
   });
   }
+*/
+
 
 }
