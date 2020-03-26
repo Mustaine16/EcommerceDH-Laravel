@@ -84,8 +84,34 @@ class UserTest extends TestCase
 
     }
 
-    /*
-    public function testUsuarioPuedeCargarElementoEnCarrito()
+    public function testUsuarioPuedeQuitarProductoDeCarrito()
+    {
+
+        $this->withoutExceptionHandling();
+        $user = factory(User::class)->create([
+          'password'=>bcrypt($password='pepino1234')
+        ]);
+
+        $response = $this->post('/login', [
+            'email' => $user->email,
+            'password' => $password,
+        ]);
+
+        $producto = \App\Producto::find(5);
+        // dd($producto);
+        $id=$producto->id;
+        // dd($id);
+
+        $response=$this->call('PUT','/usuario/carrito/addItem',[
+          'id_producto'=>$id
+        ]);
+        $response->assertRedirect('/carrito');
+        //eliminarlo
+
+        $response=$this->get("/usuario/carrito/dropItem/$id");
+        $response->assertRedirect('/carrito');
+    }
+    public function testUsuarioPuedeRealizarCompra()
     {
       $this->withoutExceptionHandling();
       $user = factory(User::class)->create([
@@ -96,6 +122,24 @@ class UserTest extends TestCase
           'email' => $user->email,
           'password' => $password,
       ]);
+
+      $producto = \App\Producto::find(5);
+      // dd($producto);
+      $id=$producto->id;
+      // dd($id);
+
+      $response=$this->call('PUT','/usuario/carrito/addItem',[
+        'id_producto'=>$id
+      ]);
+      $response->assertRedirect('/carrito');
+
+      //Comprar
+      $response = $this->get('/usuario/carrito/comprar');
+      $response->assertRedirect('/compras');
+      $response = $this->get('/usuario/carrito/finCompra');
+      $response->assertSuccessful();
+
+
     }
-    */
+
 }

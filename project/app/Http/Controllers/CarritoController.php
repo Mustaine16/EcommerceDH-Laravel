@@ -104,9 +104,9 @@ class CarritoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id){
-   
+
         $user = Auth::user();
-    
+
         $producto = Carrito::where('id_producto','=',$id)
                             ->where('id_usuario',"=",$user->id)
                             ->limit(1)->first();
@@ -123,7 +123,7 @@ class CarritoController extends Controller
     public function comprar(Request $req){
 
         /***************************
-        * 
+        *
         * GUARDAR DATOS EN LA TABLA DE COMPRAS
         *
         *****************************/
@@ -150,9 +150,9 @@ class CarritoController extends Controller
             $compra->save();
         }
 
-                
+
         /***************************
-        * 
+        *
         * BORRAR PRODUCTOS DEL CARRITO
         *
         *****************************/
@@ -165,8 +165,8 @@ class CarritoController extends Controller
         // El metodo toArray convierte la collection en un array simple
 
         Carrito::destroy($productosID->toArray());
-        
-        $compraOK = 'la compra se ha realizado con exitus';
+
+        $compraOK = 'La compra se ha realizado con éxito';
         $vac = compact('compraOK','productos');
         // dd($vac);
         return redirect('/compras')->with('compraOK', 'Su compra se ha realizado con exito');
@@ -181,8 +181,8 @@ class CarritoController extends Controller
         $compra = new Compra();
 
         // $compra->id_usuario = $user->id;
-        // $compra->id_producto = 
-      
+        // $compra->id_producto =
+
 
 
     }
