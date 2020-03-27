@@ -171,6 +171,15 @@ class ProductosController extends Controller
     {
         $producto = Producto::find($id);
 
+
+        //hay al menos un producto en algun carrito, entonces no se puede eliminar
+        // if($producto->enCarrito->count() !== 0){
+        //     $mensajeError = "No se puede eliminar el producto $producto->nombre porque esta relacionado en algun carrito.";
+
+        //     session()->flash('errorBaja', $mensajeError);
+        //     return redirect()->back();
+        // }
+
         //Se borra la imagen para no malgastar almacenamiento
         $imagenVieja = $producto->imagen;
         //Se verifica que no sea la imagen de stock

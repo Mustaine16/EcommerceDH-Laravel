@@ -17,7 +17,7 @@ class Producto extends Model
     return $this->belongsToMany('App\User', 'carritos', 'id_producto', 'id_usuario');
   }
 
-  public function compras(){
+  public function comprado(){
     return $this->belongsToMany('App\User','compras','id_producto', 'id_usuario')->withPivot(['cantidad','total']);
   }
 }

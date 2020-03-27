@@ -17,7 +17,7 @@ productosArr_node.forEach(item => {
     });
 });
 
-//Handlers
+//Handler del evento
 
 function handleSelect(event, precio) {
     const cantidad = event.target.value;
@@ -25,6 +25,8 @@ function handleSelect(event, precio) {
     precio.dataset.subtotal = subtotal;
     precio.textContent = "$ " + new Intl.NumberFormat().format(subtotal);
 }
+
+//Setear el precio visualmente
 
 function setPrecioFinal() {
     const productosArray = Array.from(productosArr_node);

@@ -23,7 +23,10 @@
         </div>
     @endif
 
+    <!-- Boton para crear un nuevo producto -->
     <a class="btn btn-success mb-3 d-block ml-auto p-3" href="/producto/agregar">Agregar nuevo producto</a>
+    
+    <!-- Tabla de productos -->
     <table class="table">
         <thead>
             <tr>
@@ -47,15 +50,36 @@
                 </td>
                 <td class="acciones">                
                     <a href="/producto/{{$producto->id}}/editar" class="btn btn-success d-inline-block">Editar</a>
-                     <form action="/producto/{{$producto->id}}/borrar" method="post">
-                        {{csrf_field()}}
-                        <button class="btn btn-danger" width="100">Borrar</button>
+                     <form action="">
+                        <button class="btn btn-danger borrarFake" data-idproducto={{$producto->id}}>Borrar</button>
                      </form>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
+
+    <!-- Modal para confirmar eliminacion -->
+    <section class="modal_container" id="modal">
+        <article class="modal_card">
+            <h3>Confirmar eliminacion</h4>
+            <p>¿Estas seguro de querer eliminar este producto?</p>
+            <small>Esta accion no tiene marcha atras</small>
+            <div class="modal_botones">
+                <form action="/producto/{{$producto->id}}/borrar" method="post" id="formBorrar">
+                    {{csrf_field()}}
+                    <button class="btn btn-secondary" id="closeModal">Cancelar</button>
+                    <button class="btn btn-danger" id="borrar">Borrar</button>
+                </form>
+            </div>
+    </article>
+    </section>
+    
+    <!-- Paginacion -->
     {{$productos->links()}}
 </main>
+@endsection
+
+@section("script")
+<script src="{{asset('js/crud.js')}}" ></script>
 @endsection
