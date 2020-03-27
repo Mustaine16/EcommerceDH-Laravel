@@ -1,0 +1,16 @@
+//	PASOS PARA CORRER LOS TESTS	//
+1_CREAR EN LA BASE DE DATOS UNA BASE ALTERNATIVA PARA LOS TESTS CON EL SCRIPT PROVISTO: 
+	EJ: ecommerce_dh_testing.sql 
+	(este archivo debe ser una copia del script de la base real, 
+	con el nombre de la base modificado desde luego)
+  Y MODIFICARLA CON :
+		modificar_base_testeo.sql (los archivos están en el directorio SQL)
+2_VERIFICAR QUE EN EL ARCHIVO .env.testing EL NOMBRE COINCIDA CON EL
+  DE LA BASE DE PRUEBA EN EL GESTOR DE BASES DE DATOS.
+3_(OPCIONAL) CREAR UN ALIAS: EN EL EMULADOR DE TERMINAL(EJ: BASH)
+	1_ Parase en el directoria raíz del projecto (donde está la carpeta vendor)	
+	2_ Tipear alias test="./vendor/bin/phpunit"
+4_CORRER LOS TESTS: en el directorio raíz tipear test (si es que se definió el alias en el paso 3)
+	ó ./vendor/bin/phpunit 
+5_(OPCIONAL) AGREGAR --testdox para más detalles sobre los tests
+

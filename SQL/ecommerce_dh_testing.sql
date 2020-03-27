@@ -64,14 +64,14 @@ CREATE TABLE `compras` (
 --
 
 INSERT INTO `compras` (`id`, `fecha`, `cantidad`, `id_producto`, `id_usuario`, `total`) VALUES
-(31, '2024-03-20', 1, 3, 5, 25999),
-(32, '2024-03-20', 1, 7, 5, 29500),
-(33, '2024-03-20', 1, 5, 5, 37500),
-(34, '2024-03-20', 1, 4, 5, 15999),
-(35, '2024-03-20', 1, 8, 5, 120000),
-(36, '2024-03-20', 1, 13, 5, 218999),
-(37, '2024-03-20', 2, 4, 5, 31998),
-(38, '2024-03-20', 2, 3, 5, 51998);
+(31, '24-03-20', 1, 3, 5, 25999),
+(32, '24-03-20', 1, 7, 5, 29500),
+(33, '24-03-20', 1, 5, 5, 37500),
+(34, '24-03-20', 1, 4, 5, 15999),
+(35, '24-03-20', 1, 8, 5, 120000),
+(36, '24-03-20', 1, 13, 5, 218999),
+(37, '24-03-20', 2, 4, 5, 31998),
+(38, '24-03-20', 2, 3, 5, 51998);
 
 -- --------------------------------------------------------
 
@@ -296,14 +296,14 @@ ALTER TABLE `users`
 -- Filtros para la tabla `carritos`
 --
 ALTER TABLE `carritos`
-  ADD CONSTRAINT `fk_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `compras`
 --
 ALTER TABLE `compras`
-  ADD CONSTRAINT `fk_compras_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_compras_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_compras_users` FOREIGN KEY (`id_usuario`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
