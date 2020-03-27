@@ -11,18 +11,18 @@ use App\Marca;
 // $so = array("android","ios","otro");
 // $nombres=array('alpha','beta','nokia');
 
-$factory->define(App\Producto::class, function (Faker $faker) {
+$factory->define(\App\Producto::class, function (Faker $faker) {
 
     return [
-        'id'=>null,
-        'nombre'=>$faker->word(),
-        'procesador'=>$faker->word(),
-        // 'precio'=>$faker->randomNumber(),
-        'sist_operativo'=>$faker->word(),
-        // 'pantalla'=>$faker->randomNumber(),
-        // 'camara'=>$faker->numberBetween(4,32),
-        // 'memoria_ram'=>$faker->numberBetween(4,64),
-        // 'id_marca'=>$faker->randomElement($marcas),
-        // 'memoria_int'=>$faker->numberBetween(100,2000)
+        'nombre'=>$faker->word,
+        'procesador'=>$faker->word,
+        'precio'=>$faker->randomFloat(),
+        'sist_operativo'=>$faker->word,
+        'imagen'=>'celular-generico.png',
+         'pantalla'=>$faker->randomNumber(),
+        'camara'=>$faker->numberBetween(4,32),
+        'memoria_ram'=>$faker->numberBetween(4,64),
+        'id_marca'=>1,
+        'memoria_int'=>$faker->numberBetween(100,2000)
     ];
 });

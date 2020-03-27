@@ -16,7 +16,7 @@
     </button>
   </div>
   @endif
-
+{{-- {{ dd($producto->nombre)}} --}}
   <section class="container pt-2 mb-2">
       <article class="producto__container p-2">
         <!-- Imagen del producto -->

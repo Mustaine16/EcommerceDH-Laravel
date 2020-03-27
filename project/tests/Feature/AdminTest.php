@@ -303,42 +303,42 @@ class AdminTest extends TestCase
     }
 
 
-        public function testAdminPuedeEliminarProducto()
-        {
-          $this->withoutExceptionHandling();
-          $user = User::find(3);
-          $password='12121212';
+    public function testAdminPuedeEliminarProducto()
+    {
+      $this->withoutExceptionHandling();
+      $user = User::find(3);
+      $password='12121212';
 
-          $response = $this->post('/login', [
-              'email' => $user->email,
-              'password' => $password,
-          ]);
-
-
-          //agregar una prod
-
-          //storage falso
-          Storage::fake('local');
+      $response = $this->post('/login', [
+          'email' => $user->email,
+          'password' => $password,
+      ]);
 
 
-          $producto = factory(Producto::class)->make();
-          $nombre='nombre falso';
-          $response = $this->json('POST', '/producto/agregar', [
-              'nombre' => $nombre,
-              'procesador' => $producto->procesador,
-              'sist_operativo' =>$producto->sist_operativo
-          ]);
+      //agregar una prod
+
+      //storage falso
+      Storage::fake('local');
 
 
-          $response->assertRedirect('/producto/admin');
+      $producto = factory(Producto::class)->make();
+      $nombre='nombre falso';
+      $response = $this->json('POST', '/producto/agregar', [
+          'nombre' => $nombre,
+          'procesador' => $producto->procesador,
+          'sist_operativo' =>$producto->sist_operativo
+      ]);
 
-          // borrarlo
-           $producto = Producto::where('nombre',$nombre)->first();
 
-          $response = $this->json('POST',"/producto/$producto->id/borrar");
-          $response->assertRedirect('/producto/admin');
+      $response->assertRedirect('/producto/admin');
 
-        }
+      // borrarlo
+       $producto = Producto::where('nombre',$nombre)->first();
+
+      $response = $this->json('POST',"/producto/$producto->id/borrar");
+      $response->assertRedirect('/producto/admin');
+
+    }
 
     public function testAdminPuedeModificarProducto()
     {
