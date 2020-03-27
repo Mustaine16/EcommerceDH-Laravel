@@ -13,7 +13,7 @@ class ProductosController extends Controller
 {
     public function index()
     {
-        $productos = Producto::paginate(4);
+        $productos = Producto::paginate(8);
 
         $vac = compact("productos");
 
@@ -153,14 +153,14 @@ class ProductosController extends Controller
             $imagenNombre = uniqid() . "." . $imagenExt; //Nombre a guardar en BBDD
             $producto->imagen = $imagenNombre;
             $request->imagen->move(public_path('img/productos'), $imagenNombre);
-            
+
             //Se verifica que no sea la imagen de stock
             // if($imagenVieja != 'no-image.jpg'){
             //     \File::delete('img/productos/' . $imagenVieja);
             // }
-            
+
         }
-        
+
         $producto->save();
         return redirect("/producto/admin")->with('mensajeExito', 'Producto: ' . $producto->nombre . ' editado correctamente');
     }
