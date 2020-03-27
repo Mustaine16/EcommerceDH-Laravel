@@ -85,6 +85,19 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+      $reglas = [
+          "nombre" => "required",
+          'apellido'=>'required',
+          'direccion'=>'required',
+          'ciudad'=>'required'
+      ];
+
+      $mensajes = [
+          "required" => "El campo :attribute es obligatorio."
+      ];
+
+      $this->validate($request, $reglas, $mensajes);
+
        $usuario = User::find($id);
        //validar
        $usuario->nombre = $request['nombre'];
@@ -96,6 +109,91 @@ class UsersController extends Controller
 
        return redirect('/perfil');
     }
+
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editCuenta()
+    {
+        $usuario=Auth::user();
+        // dd($usuario);
+        return view('cuenta',compact('usuario'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateCuenta(Request $request, $id)
+    {
+      // dd($request['username']);
+
+
+      $this->validate($request,[
+        'username'=>'required'
+      ]);
+
+      // $usuario=Auth::user();
+       $usuario = User::find($id);
+       // dd($usuario);
+
+       //poner el campo y guardar
+       $usuario->username = $request['username'];
+
+       $usuario->save();
+       return redirect('/cuenta');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editSeguridad()
+    {
+        $usuario=Auth::user();
+        return view('seguridad',compact('usuario'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateSeguridad(Request $request, $id)
+    {
+      $reglas = [
+          "password" => "required|confirmed"
+      ];
+
+      $mensajes = [
+          "required" => "El campo :attribute es obligatorio."
+      ];
+
+      $this->validate($request, $reglas, $mensajes);
+       // if($request['password']!==$request['repassword']){
+       //
+       // }
+
+       $usuario = User::find($id);
+       //validar
+       $usuario->password = bcrypt($request['password']);;
+
+       $usuario->save();
+
+       return redirect('/seguridad');
+    }
+
 
     /**
      * Remove the specified resource from storage.

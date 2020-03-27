@@ -5,10 +5,18 @@
 @endsection
 
 @section("title", "Cuenta")
-
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 @section("main")
   <main class="container mt-4" id="form-container">
-      
+
     <!-- LISTA -->
     <ul>
       <li><a href="/perfil">Perfil</a></li>
@@ -24,21 +32,25 @@
       </div>
     <?php endif; ?>
     <!-- FORMULARIO -->
-    <form action="" method="Post"   class="fix-height">
+    {{-- {{dd($usuario->username)}} --}}
+    <form action="/cuenta/{{$usuario->id}}" method="Post" class="fix-height">
+      @csrf
+
       <h1 class="">Cambiar datos de la cuenta</h1>
       <section>
 
         <div class="d-flex flex-column">
-          <label for="usuario">Usuario</label>
-          <input class="inputs-f" type="text" name="username" placeholder="Introduce tu usuario" value=''>
+          <label for="username">Usuario</label>
+          <input class="inputs-f" type="text" name="username" placeholder="Introduce tu usuario" value='{{$usuario->username}}'>
          <!-- MOSTRAR ERROR  -->
         </div>
 
-        <div class="d-flex flex-column">
+        {{-- <div class="d-flex flex-column">
           <label for="email">Email</label>
           <input class="inputs-f" type="email" name="email" placeholder="Introduce tu email" value=''>
          <!-- MOSTRAR ERROR  -->
-        </div>
+        </div> --}}
+        <input type="hidden" name="_method" value="PUT">
 
         <input type="submit" name="guardar" class="btn btn-primary" value="Guardar Cambios">
 

@@ -5,7 +5,15 @@
 @endsection
 
 @section("title", "Seguridad")
-
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 @section("main")
   <main class="container mt-4" id="form-container">
       <!-- LISTA -->
@@ -27,7 +35,9 @@
       <?php endif; ?>
 
       <!-- FORMULARIO -->
-      <form action="" method="Post"   class="fix-height">
+      <form action="/seguridad/{{$usuario->id}}" method="Post" class="fix-height">
+        @csrf
+
         <h1 class="">Cambiar contraseña</h1>
 
         <section>
@@ -39,11 +49,11 @@
           </div>
 
           <div class="d-flex flex-column">
-            <label for="repassword">Repite la contraseña</label>
-            <input class="inputs-f" type="password" name="repassword" placeholder="Repite la contraseña">
+            <label for="password_confirmation">Repite la contraseña</label>
+            <input class="inputs-f" type="password" name="password_confirmation" placeholder="Repite la contraseña">
             <!-- Mostrar errores -->
           </div>
-
+          <input type="hidden" name="_method" value="PUT">
           <input type="submit" name="guardar" class="btn btn-primary" value="Guardar Cambios">
         </form>
 

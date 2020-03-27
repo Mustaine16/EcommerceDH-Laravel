@@ -55,20 +55,28 @@ Route::post("/marca/{id}/borrar", "MarcasController@destroy")->middleware('verif
 
 Route::get("/perfil", "UsersController@edit")->middleware('auth');
 
+
 Route::put('/perfil/{id}','UsersController@update');
+Route::get("/cuenta", "UsersController@editCuenta")->middleware('auth');
 
-Route::get("/cuenta", function () {
-    return view("cuenta");
-})->middleware('auth');
+Route::put('/cuenta/{id}','UsersController@updateCuenta');
 
-Route::get("/seguridad", function () {
-    return view("seguridad");
-})->middleware('auth');
+Route::get("/seguridad", "UsersController@editSeguridad")->middleware('auth');
+
+Route::put('/seguridad/{id}','UsersController@updateSeguridad');
+//
+// Route::get("/cuenta", function () {
+//     return view("cuenta");
+// })->middleware('auth');
+//
+// Route::get("/seguridad", function () {
+//     return view("seguridad");
+// })->middleware('auth');
 
 Route::get('/compras', 'ComprasController@index')->middleware('auth');
 
 /**
- * Vista de Catalogo, Detalles de Productos 
+ * Vista de Catalogo, Detalles de Productos
  */
 
 Route::get('/catalogo', "ProductosController@index");
