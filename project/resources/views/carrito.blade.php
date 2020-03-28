@@ -2,6 +2,8 @@
 
 @section("estilos")
 <link rel="stylesheet" href="{{asset('css/carrito.css')}}" />
+<link rel="stylesheet" href="{{asset('css/adminProductos.css')}}" />
+
 @endsection
 
 @section("title", "Carrito")
@@ -41,10 +43,23 @@
       <section class="resumen">
         <h5>Resumen de compra</h5>
         <p id="precioFinal" data-subtotal={{$subtotal}}>Precio Final: $ {{number_format($subtotal,0,"",".")}}</p>
-        <a href="/catalogo" class="boton boton-back"><i class="fas fa-arrow-left"></i> Seguir comprando</a>      
-        <button type="submit" class="btn btn-success boton">Realizar compra</button>
+        <a href="/catalogo" class="boton boton-back"><i class="fas fa-arrow-left"></i> Seguir comprando</a>
+        <button type="submit" class="btn btn-success boton borrarFake">Realizar compra</button>
       </section>
-
+      <section class="modal_container" id="modal">
+          <article class="modal_card">
+              <h3>Confirmar compra</h4>
+              <p>Haz click en comprar para realizar la compra</p>
+              <small></small>
+              <div class="modal_botones">
+                  <form action="/usuario/carrito/comprar" method="post" id="formBorrar">
+                      {{csrf_field()}}
+                      <button class="btn btn-secondary" id="closeModal">Cancelar</button>
+                      <button type="submit" class="btn btn-success" id="borrar">Comprar</button>
+                  </form>
+              </div>
+      </article>
+      </section>
 
     </form>
 
@@ -55,7 +70,10 @@
       <h2 class="text-center">Tu carrito se encuentra vacío</h2>
       <a href="/catalogo" class="boton boton-back"><i class="fas fa-arrow-left"></i> Seguir comprando</a>
     </div>
-  @endif  
+  @endif
+
+
+      <!-- Modal para confirmar compra -->
 
 </section>
 
@@ -63,4 +81,5 @@
 
 @section("script")
 <script src="{{asset('js/carrito.js')}}" ></script>
+<script src="{{asset('js/crud.js')}}" ></script>
 @endsection
