@@ -1,53 +1,126 @@
-console.log('hola');
-//a lo picapiedra  atr
+// capturar los elementos
+const form = document.querySelector('#formularioContacto');
 
-// ¡Gracias Mozilla!
-const form  = document.getElementsByTagName('form')[0];
+var campoNombre = document.querySelector('#nombre');
+const nombreError = document.querySelector('#nombre + span.error');
 
-const email = document.getElementById('mail');
-const emailError = document.querySelector('#mail + span.error');
+var campoEmail = document.querySelector('#email');
+const emailError = document.querySelector('#email + span.error');
 
-email.addEventListener('input', function (event) {
-  // Each time the user types something, we check if the
-  // form fields are valid.
+var campoApellido = document.querySelector('#apellido');
+const apellidoError = document.querySelector('#apellido + span.error');
 
-  if (email.validity.valid) {
-    // In case there is an error message visible, if the field
-    // is valid, we remove the error message.
-    emailError.innerHTML = ''; // Reset the content of the message
-    emailError.className = 'error'; // Reset the visual state of the message
-  } else {
-    // If there is still an error, show the correct error
-    showError();
+var campoTelefono = document.querySelector('#telefono');
+const telefonoError = document.querySelector('#telefono + span.error');
+
+const erroresAlEnviar = document.querySelector('#erroresAlEnviar');
+
+var regexMail= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+var regexTelefono =/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/
+
+var errores =true;
+
+
+form.onsubmit = function(event){
+
+//verificar campos
+campoNombre.onblur = function(event){
+  //campo vacio o muy corto
+  if(this.value.trim()=="" || this.value.trim().length < 2){
+    if(this.value.trim()=="") {
+    console.log('El nombre no puede estar vacío');
+    //mostrar mensaje de error
+    nombreError.innerHTML = 'El nombre no puede estar vacío';
+    nombreError.className = 'text-danger';
+    errores=true;
+   }
+   else {
+     console.log('El nombre es muy corto pa');
+     //mostrar mensaje de error
+     nombreError.innerHTML = 'El nombre es muy corto, al menos dos caracteres';
+     nombreError.className = 'text-danger';
+     errores=true;
+   }
   }
-});
-
-form.addEventListener('submit', function (event) {
-  // if the email field is valid, we let the form submit
-
-  if(!email.validity.valid) {
-    // If it isn't, we display an appropriate error message
-    showError();
-    // Then we prevent the form from being sent by canceling the event
-    event.preventDefault();
+  else{
+    //mensaje éxito
+    nombreError.innerHTML = 'OK';
+    nombreError.className = 'text-success';
+    errores=false;
   }
-});
-
-function showError() {
-  if(email.validity.valueMissing) {
-    // If the field is empty
-    // display the following error message.
-    emailError.textContent = 'Ingresa un email';
-  } else if(email.validity.typeMismatch) {
-    // If the field doesn't contain an email address
-    // display the following error message.
-    emailError.textContent = 'Debes ingresar un email válido';
-  } else if(email.validity.tooShort) {
-    // If the data is too short
-    // display the following error message.
-    emailError.textContent = `El email tiene que tener al menos ${ email.minLength } caracteres; has ingresado ${ email.value.length }.`;
+}
+//apellido
+campoApellido.onblur = function(event){
+  //campo vacio
+  if(this.value.trim()=="" ){
+    //mostrar mensaje de error
+    apellidoError.innerHTML = 'El apellido no puede estar vacío';
+    apellidoError.className = 'text-danger';
+    errores=true;
   }
+  else{
+    //mensaje éxito
+    apellidoError.innerHTML = 'OK';
+    apellidoError.className = 'text-success';
+    errores=false;
+  }
+}
+//email
+campoEmail.onblur = function(event){
+  //campo vacio o muy corto
+  if(this.value.trim()=="" || !regexMail.test(this.value)) {
+    if(this.value.trim()=="") {
+    //mostrar mensaje de error
+    emailError.innerHTML = 'El email no puede estar vacío';
+    emailError.className = 'text-danger';
+    errores=true;
+   }
+   else {
+     console.log('El email no es valido');
+     //mostrar mensaje de error
+     emailError.innerHTML = 'El email no parece válido';
+     emailError.className = 'text-danger';
+     errores=true;
+   }
+  }
+  else{
+    //mensaje éxito
+    emailError.innerHTML = 'OK';
+    emailError.className = 'text-success';
+    errores=false;
+  }
+}
+//telefono
+campoTelefono.onblur = function(event){
+  //campo vacio o muy corto
+  if(this.value.trim()=="" || !regexTelefono.test(this.value)) {
+    if(this.value.trim()=="") {
+    //mostrar mensaje de error
+    telefonoError.innerHTML = 'El teléfono no puede estar vacío';
+    telefonoError.className = 'text-danger';
+    errores=true;
+   }
+   else {
+     //mostrar mensaje de error
+     telefonoError.innerHTML = 'El teléfono no parece válido';
+     telefonoError.className = 'text-danger';
+     errores=true;
+   }
+  }
+  else{
+    //mensaje éxito
+    telefonoError.innerHTML = 'OK';
+    telefonoError.className = 'text-success';
+    errores=false;
+  }
+}
 
-  // Set the styling appropriately
-  emailError.className = 'error active';
+
+    if( errores ){
+      // console.log('Parece que hay errores en los campos');
+      erroresAlEnviar.innerHTML = 'parece que hay errores en los campos';
+      erroresAlEnviar.className = 'alert-danger ';
+      // evitar enviar el formulario
+      event.preventDefault();
+    }
 }

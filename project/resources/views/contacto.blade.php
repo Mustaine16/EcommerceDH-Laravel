@@ -2,23 +2,6 @@
 
 @section("estilos")
 <link rel="stylesheet" href="{{asset('css/contacto.css')}}" />
- <style media="screen">
- .error {
-width  : 100%;
-padding: 0;
-
-font-size: 80%;
-color: white;
-background-color: red;
-border-radius: 0 0 5px 5px;
-
-box-sizing: border-box;
-}
-
-.error.active {
-padding: 0.3em;
-}
- </style>
 
 @endsection
 
@@ -39,8 +22,9 @@ padding: 0.3em;
     <!-- esto envuelve al formulario -->
     <article class="container container-fluid" id="form-container">
 
-      <form action="/contacto" method="post" novalidate>
+      <form action="/contacto" method="post" novalidate id="formularioContacto">
         @csrf
+        <div id="erroresAlEnviar"></div>
         <div class="form-group">
           <label for="nombre">Nombre</label>
           <input
@@ -62,13 +46,14 @@ padding: 0.3em;
             name="apellido"
             value="{{old('apellido')}}"
            />
+           <span class="error" aria-live="polite"></span>
         </div>
 
         <div class="form-group">
           <label for="email">Email</label>
           <input
             type="email"
-            id="mail"
+            id="email"
             class="form-control email-input"
             name="email"
             value="{{old('email')}}"
@@ -85,6 +70,8 @@ padding: 0.3em;
             name="telefono"
             value="{{old('telefono')}}"
            />
+           <span class="error" aria-live="polite"></span>
+
         </div>
 
         <div class="form-group">
