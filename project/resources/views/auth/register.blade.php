@@ -41,7 +41,7 @@
           name="username"
           value="{{ old('username') }}"
           required autocomplete="username"
-          autofocus/>
+          />
           <span class="error" aria-live="polite"></span>
 
           @error('name')
@@ -109,11 +109,14 @@
             {{ __('Register') }}
            </button>
 
-          <a href="/login" class="col col-md-auto col-lg-auto mb-3 text-center" id="already-count">
-          Ya tengo una cuenta
-          </a>
         </div>
+        <a href="/login" class="col col-md-auto col-lg-auto mb-3 text-center" id="already-count">
+          Ya tengo una cuenta
+        </a>
       </form>
+      <div class="">
+
+      </div>
   </section>
 @endsection
 @section('script')

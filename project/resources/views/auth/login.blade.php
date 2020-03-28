@@ -22,7 +22,7 @@
         name="email"
         value= "{{ old('email') }}"
         required autocomplete="email"
-        autofocus
+        
       />
       <span class="error" aria-live="polite"></span>
 
@@ -64,7 +64,7 @@
     </button>
    @if (Route::has('password.request'))
     <a class="btn btn-link" href="{{ route('password.request') }}">
-    {{ __('¿Te olvidaste la contra perri?') }}
+    {{ __('¿Te olvidaste la contraseña?') }}
     </a>
    @endif
   </div>
