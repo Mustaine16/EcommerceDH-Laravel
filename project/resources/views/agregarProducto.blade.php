@@ -89,4 +89,5 @@
 
     </section>
 </main>
+<script src="../js/validar_form_producto.js"></script>
 @endsection

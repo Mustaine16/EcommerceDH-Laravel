@@ -44,4 +44,5 @@
 
     </section>
 </main>
+<script src="../js/validar_form_marca.js"></script>
 @endsection
