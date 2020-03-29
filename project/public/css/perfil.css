@@ -73,6 +73,11 @@ ul.lista-compras {
     margin: 0;
 }
 
+.lista-compras img {
+    height:4em;
+    width: auto;
+}
+
 .lista-compras .nombre {
     width: 105px;
 }
@@ -136,7 +141,8 @@ ul.lista-compras {
     }
 
     .lista-compras img{
-        width:80px
+        height:6em;
+        width: auto;
     }
 
     .lista-compras li{
@@ -152,7 +158,8 @@ ul.lista-compras {
     }
 
     .lista-compras img{
-        width:100px
+        height:6em;
+        width: auto;
     }
 }
 

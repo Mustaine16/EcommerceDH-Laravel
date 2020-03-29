@@ -27,7 +27,7 @@
     <ul class="lista-compras">
       @forelse ($compras as $producto)
         <li>
-          <img src="{{asset('img/productos/' . $producto->imagen)}}" width="50" alt="">
+          <img src="{{asset('img/productos/' . $producto->imagen)}}">
           <p class="nombre">{{$producto->nombre}}</p>
           <div class="cantidad">
             <small>Cantidad</small>
