@@ -10,7 +10,7 @@
     <!-- Catalogo -->
 
 
-    <section class="products__container">
+    <section class="products__container fix-height productsFix">
       <h1>Catalogo</h1>
        @foreach ($productos as $key => $producto)
         <article class="product__card">

@@ -1,11 +1,14 @@
-
 //Nodos
 
+//Para manipular el precio final
 const productosArr_node = document.querySelectorAll(".producto_datos");
 const precioFinal_node = document.getElementById("precioFinal");
 
+//Para manipular los modales
+const openModal = document.getElementById("openModal");
+const closeModal = document.getElementById("closeModal");
 
-//Listeners
+//Listeners- Manipular precio final
 
 productosArr_node.forEach(item => {
     const select = item.children[2];
@@ -15,6 +18,25 @@ productosArr_node.forEach(item => {
         handleSelect(event, precio);
         setPrecioFinal();
     });
+});
+
+//Abrir modal de confirmacion
+
+openModal.addEventListener("click", event => {
+    event.preventDefault();
+    if (!modal.classList.contains("modal-open")) {
+        modal.classList.toggle("modal-open");
+        formulario.dataset.idproducto = boton.dataset.idproducto;
+    }
+});
+
+//Cerrar Modal
+
+closeModal.addEventListener("click", () => {
+    event.preventDefault();
+    if (modal.classList.contains("modal-open")) {
+        modal.classList.remove("modal-open");
+    }
 });
 
 //Handler del evento

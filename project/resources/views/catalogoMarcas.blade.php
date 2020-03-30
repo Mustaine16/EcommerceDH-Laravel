@@ -10,7 +10,7 @@
 
     <!-- Catalogo  de marcas-->
 
-    <section class="products__container">
+    <section class="products__container fix-height">
       <h1>Marcas</h1>
 
        @foreach ($marcas as $marca)

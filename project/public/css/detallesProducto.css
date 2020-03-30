@@ -43,6 +43,7 @@ button {
     background: var(--navbar);
     border: none;
     color: whitesmoke;
+    padding: .6em;
     text-transform: uppercase;
     font-weight: 700;
     border-radius: 4px;

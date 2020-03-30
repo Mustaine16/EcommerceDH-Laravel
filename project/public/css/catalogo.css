@@ -3,9 +3,18 @@
 .products__container {
     display: grid;
     grid-template-columns: repeat(2, 49%);
+    grid-template-rows: 70px auto;
     gap: 7px;
     padding: 1em;
     margin: auto;
+}
+
+.productsFix{
+    align-items: flex-start;
+}
+
+.productsFix .product__card{
+    min-height: 400px;
 }
 
 h1 {

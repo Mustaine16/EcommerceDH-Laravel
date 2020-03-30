@@ -131,11 +131,10 @@ class CarritoController extends Controller
         $user = Auth::user();
 
         $productos = $user->carrito;
-
         //Traemos el array con cantidades, y se elimina el token de la primera posicion
         $req->flashExcept('_token');
-
-        $cantidadPorProducto = array_values($req->session()->all()["_old_input"]);
+        
+        $cantidadPorProducto = array_values($req->session()->all()["_old_input"]);  
 
         // dd($cantidadPorProducto);
 

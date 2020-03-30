@@ -119,7 +119,7 @@ Route::get('/carrito', 'UsersController@showCarrito');
 Route::put('/usuario/carrito/addItem','CarritoController@store')->middleware('auth');
 
 //Comprar
-Route::get('/usuario/carrito/comprar','CarritoController@comprar')->middleware('auth');
+Route::post('/usuario/carrito/comprar','CarritoController@comprar')->middleware('auth');
 
 //Pagar
 Route::get('/usuario/carrito/finCompra','CarritoController@finCompra')->middleware('auth');

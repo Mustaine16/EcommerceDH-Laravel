@@ -7,6 +7,45 @@ td.acciones form button{
   width: 100%;
 }
 
+/* Modal */
+
+.modal_container {
+  display: flex;
+  position: fixed;
+  z-index: 1060;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625em;
+  overflow-x: hidden;
+  transition: all 0.3s;
+  pointer-events: none;
+}
+
+.modal-open {
+  /* top: 0; */
+  opacity: 1;
+  background: rgba(0,0,0,.4);
+  pointer-events: all;
+}
+
+.modal_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 2em;
+  border-radius: 0.3em;
+  box-shadow: 0 0 10px -1px #000000cc;
+  height: 250px;
+}
+
 /* Paginacion */
 
 ul.pagination {

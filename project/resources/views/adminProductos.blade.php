@@ -81,5 +81,5 @@
 @endsection
 
 @section("script")
-<script src="{{asset('js/crud.js')}}" ></script>
+<script src="{{asset('js/adminProductos.js')}}" ></script>
 @endsection

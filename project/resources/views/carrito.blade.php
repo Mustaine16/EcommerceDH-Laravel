@@ -18,7 +18,7 @@
   @if(isset($carrito) && count($carrito) >= 1 && !isset($compraOK) )
 
     <!-- Formulario de compra -->
-    <form class="form-compra" action="/usuario/carrito/comprar" method="get">
+    <form class="form-compra" action="/usuario/carrito/comprar" method="post">
       @csrf
 
       <ul>
@@ -44,7 +44,7 @@
         <h5>Resumen de compra</h5>
         <p id="precioFinal" data-subtotal={{$subtotal}}>Precio Final: $ {{number_format($subtotal,0,"",".")}}</p>
         <a href="/catalogo" class="boton boton-back"><i class="fas fa-arrow-left"></i> Seguir comprando</a>
-        <button type="submit" class="btn btn-success boton borrarFake">Realizar compra</button>
+        <button class="btn btn-success boton borrarFake" id="openModal">Realizar compra</button>
       </section>
       <section class="modal_container" id="modal">
           <article class="modal_card">
@@ -55,7 +55,7 @@
                   <form action="/usuario/carrito/comprar" method="post" id="formBorrar">
                       {{csrf_field()}}
                       <button class="btn btn-secondary" id="closeModal">Cancelar</button>
-                      <button type="submit" class="btn btn-success" id="borrar">Comprar</button>
+                      <button type="submit" class="btn btn-success" id="confirmarCompra">Comprar</button>
                   </form>
               </div>
       </article>
@@ -81,5 +81,5 @@
 
 @section("script")
 <script src="{{asset('js/carrito.js')}}" ></script>
-<script src="{{asset('js/crud.js')}}" ></script>
+<!-- <script src="{{asset('js/crud.js')}}" ></script> -->
 @endsection

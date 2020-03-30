@@ -14,13 +14,13 @@
 
 .container_ li {
     width: 100%;
-    height: 145px;
+    height: 200px;
     display: flex;
     position: relative;
     justify-content: space-between;
     align-items: center;
     align-items: center;
-    padding: 2em 0.3em 0.5em;
+    padding: 2em .5em .5em;
     margin-bottom: 0.5em;
     border-radius: 14px;
     background-color: white;
@@ -34,12 +34,11 @@
 }
 
 .producto_precio {
-    width: 94px;
     text-align: center;
     font-weight: 600;
     align-self: flex-end;
     background: #e5e5e4;
-    padding: 0.5em;
+    padding: 0.2em;
     border-radius: 19px;
 }
 
@@ -159,11 +158,6 @@ form.comprar {
 
 @media screen and (min-width:425px){
 
-
-    form li img{
-        width:  70px;
-    }
-
     form li a{
         font-size: 1.2em;
     }
@@ -180,12 +174,21 @@ form.comprar {
         column-gap: 1em;
     }
 
+    .container_ li {
+        padding: 2em 1em 0.5em;
+    }
+
 
     .carrito-vacio-card {
         width: 50%;
         height: 350px;
         margin: auto;
         margin-top: 2em;
+    }
+
+    .producto_precio{
+        width: 94px;
+        padding: .5em;
     }
 }
 
@@ -197,12 +200,6 @@ form.comprar {
         column-gap: 2em;
         /* margin: auto; */
     }
-
-
-    form li img{
-        width:  100px;
-    }
-
 
     .carrito-vacio-card {
         width: 30%;

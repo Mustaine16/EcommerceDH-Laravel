@@ -30,6 +30,22 @@
       </div>
     @endif
 
+    <!-- Modal para confirmar eliminacion -->
+      <section class="modal_container" id="modal">
+        <article class="modal_card">
+          <h3>Confirmar eliminacion</h4>
+            <p>¿Estas seguro de querer eliminar este producto?</p>
+            <small>Esta accion no tiene marcha atras</small>
+            <div class="modal_botones">
+              <form action="" method="post" id="formBorrar">
+                {{csrf_field()}}
+                  <button class="btn btn-secondary" id="closeModal">Cancelar</button>
+                  <button class="btn btn-danger" id="borrar">Borrar</button>
+                </form>
+            </div>
+        </article>
+    </section>
+
     <a class="btn btn-success mb-3 d-block ml-auto p-3" href="/marca/agregar">Agregar nueva marca</a>
     <table class="table">
         <thead>
@@ -51,10 +67,7 @@
                 </td>
                 <td class="acciones">
                     <a href="/marca/{{$marca->id}}/editar" class="btn btn-success d-inline-block">Editar</a>
-                     <form action="/marca/{{$marca->id}}/borrar" method="post">
-                        {{csrf_field()}}
-                        <button class="btn btn-danger" width="100">Borrar</button>
-                     </form>
+                    <button class="btn btn-danger borrarFake" width="100" data-idmarca={{$marca->id}}>Borrar</button>
                 </td>
             </tr>
             @endforeach
@@ -62,4 +75,8 @@
     </table>
     {{$marcas->links()}}
 </main>
+@endsection
+
+@section("script")
+<script src="{{asset('js/adminMarcas.js')}}" ></script>
 @endsection
