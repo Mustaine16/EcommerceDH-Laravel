@@ -30,6 +30,7 @@
                 <label for="nombre">Nombre marca</label>
                 <input type="text" class="form-control" id="nombre" aria-describedby="NombreProducto"
                     placeholder="Nombre marca" name="nombre" value="{{old('nombre')}}" />
+                <span class="text-danger" id="error-nombre"></span>
             </div>
             <div>
                 <button type="submit" class="btn btn-success mx-auto d-block">

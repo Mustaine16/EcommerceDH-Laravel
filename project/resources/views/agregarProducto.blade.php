@@ -30,6 +30,7 @@
                 <label for="nombre">Nombre del Producto</label>
                 <input type="text" class="form-control" id="nombre" aria-describedby="NombreProducto"
                     placeholder="Ingrese un nombre de producto" name="nombre" value="{{old('nombre')}}" />
+                <span class="text-danger" id="error-nombre"></span>
             </div>
             <div class="form-group">
                 <label for="id_marca">Marca</label>
@@ -43,38 +44,45 @@
                 <label for="sist_operativo">Sistema Operativo</label>
                 <input type="text" class="form-control" id="sist_operativo" placeholder="Sistema Operativo"
                     name="sist_operativo" value="{{old('sist_operativo')}}" />
+                <span class="text-danger" id="error-sist-operativo"></span>
             </div>
             <div class="form-group">
                 <label for="memoria_int">Memoria Interna</label>
                 <input type="text" class="form-control" id="memoria_int"
                     placeholder="Exprese la cantidad en numero entero" name="memoria_int"
                     value="{{old('memoria_int')}}" />
+                <span class="text-danger" id="error-memoria-int"></span>
             </div>
             <div class="form-group">
                 <label for="memoria_ram">Memoria RAM</label>
                 <input type="text" class="form-control" id="memoria_ram"
                     placeholder="Exprese la cantidad en numero entero" name="memoria_ram"
                     value="{{old('memoria_ram')}}" />
+                <span class="text-danger" id="error-memoria-ram"></span>
             </div>
             <div class="form-group">
                 <label for="procesador">Procesador</label>
                 <input type="text" class="form-control" id="procesador" placeholder="Procesador" name="procesador"
                     value="{{old('procesador')}}" />
+                <span class="text-danger" id="error-procesador"></span>
             </div>
             <div class="form-group">
                 <label for="pantalla">Pantalla</label>
                 <input type="text" class="form-control" id="pantalla" placeholder="Exprese la cantidad en numero"
                     name="pantalla" value="{{old('pantalla')}}" />
+                <span class="text-danger" id="error-pantalla"></span>
             </div>
             <div class="form-group">
                 <label for="camara">Camara</label>
                 <input type="text" class="form-control" id="camara" placeholder="Exprese la cantidad en numero"
                     name="camara" value="{{old('camara')}}" />
+                <span class="text-danger" id="error-camara"></span>
             </div>
             <div class="form-group">
                 <label for="precio">Precio</label>
                 <input type="text" class="form-control" id="precio" placeholder="Exprese la cantidad en numero"
                     name="precio" value="{{old('precio')}}" />
+                <span class="text-danger" id="error-precio"></span>
             </div>
             <div>
                 <button type="submit" class="btn btn-success mx-auto d-block">
@@ -84,6 +92,8 @@
         </form>
 
         <br>
+
+
 
         <a href="/producto/admin">Back</a>
 
