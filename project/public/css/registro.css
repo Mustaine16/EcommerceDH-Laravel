@@ -31,6 +31,11 @@
   justify-content: center;
 }
 
+#already-count{
+  display: block;
+  margin: auto;
+}
+
 @media screen and (min-width: 768px) {
   .avatar__container {
     align-items: center;

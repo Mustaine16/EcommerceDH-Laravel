@@ -7,7 +7,7 @@
 @section("title", "Admin - Marcas")
 
 @section("main")
-<main class="py-4 px-2 px-md-5">
+<main class="py-4 px-2 px-md-5 fix-height">
 
     <!-- Mensaje de confirmacion en caso de Alta/Editar-->
     @if( session()->has('mensajeExito') )

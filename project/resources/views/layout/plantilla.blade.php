@@ -68,6 +68,7 @@
                         <a class="dropdown-item text-center p-3" href="/producto/admin">Productos</a>
                         <a class="dropdown-item text-center p-3" href="/marca/admin">Marcas</a>
                         <hr>
+                        <a class="dropdown-item" href="/perfil">Perfil</a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">

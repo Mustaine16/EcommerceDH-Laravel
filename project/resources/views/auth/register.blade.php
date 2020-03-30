@@ -110,7 +110,7 @@
            </button>
 
         </div>
-        <a href="/login" class="col col-md-auto col-lg-auto mb-3 text-center" id="already-count">
+        <a href="/login" class="col col-md-auto col-lg-auto mb-3 text-center fix-a" id="already-count">
           Ya tengo una cuenta
         </a>
       </form>

@@ -29,7 +29,7 @@ h1 {
 .product__card {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     min-height: 150px;
     width: 100%;

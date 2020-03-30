@@ -22,6 +22,7 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-height: 55vh;
   /* background-color: blueviolet; */
 }
 
@@ -48,6 +49,13 @@ nav {
   margin: 10px 0;
 }
 
+.log-buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+}
+
 .buttons {
   display: flex;
   flex-direction: column;
@@ -55,7 +63,10 @@ nav {
 }
 
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
+@media (min-width: 420px) {
+  #form-container{
+    min-height: 55vh;
+  }
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -69,7 +80,7 @@ nav {
 /* // Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
   #form-container {
-    height: 660px;
+    height: 80vh;
     width: 40%;
     margin: auto;
   }
