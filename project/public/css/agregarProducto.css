@@ -34,6 +34,24 @@ label{
   justify-content: center;
 }
 
+
+/* Estos son del formulario editar marcas */
+#imagenEdit{
+  width: 25%;
+  border-color: violet;
+}
+
+#volverAtrasito{
+  display: block;
+  flex-direction: column;
+  width: fit-content;
+
+}
+
+.inputImage{
+  display: none;
+}
+
 @media screen and (min-width: 768px) {
   .imagen__container {
     align-items: center;
@@ -44,3 +62,6 @@ label{
     width: auto;
   }
 }
+
+
+
