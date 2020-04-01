@@ -16,7 +16,7 @@ return [
     'password' => 'Las contraseñas deben tener 8 o mas caracteres.',
     'reset' => '¡Tu contraseña ha cambiado exitosamente!',
     'sent' => '¡Mail con token enviado!',
-    'token' => '¡Token invalido perri!.',
+    'token' => '¡Token invalido!',
     'user' => "No encontramos a un usuario registrado con ese e-mail.",
 
 ];

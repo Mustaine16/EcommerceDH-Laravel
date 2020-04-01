@@ -20,11 +20,11 @@
             {{ csrf_field() }}
             <div class="form-group imagen__container">
                 <label class="imagen__img_container" for="imagen">
-                    <img src="https://static.websguru.com.ar/gfx/freeTextImage/placeholder.png?v=7.3.44821" alt="imagen"
+                    <img id="imagenEdit" src="https://static.websguru.com.ar/gfx/freeTextImage/placeholder.png?v=7.3.44821" alt="imagen"
                         class="imagen__img">
                     <p>Elegí una imagen</p>
                 </label>
-                <input type="file" name="imagen" id="imagen" class="imagen__input" value="">
+                <input onchange="vistazoImagen(event)" type="file" name="imagen" id="imagen" class="imagen__input" value="">
             </div>
             <div class="form-group">
                 <label for="nombre">Nombre del Producto</label>

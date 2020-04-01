@@ -82,3 +82,14 @@ precio.onblur = function() {
         errorPrecio.innerHTML = "El campo Precio debe ser Numérico.";
     }
 }
+
+
+//Preview para la imagen asi evitamos el input, que se ve feo c:
+function vistazoImagen(event) {
+    var reader = new FileReader();
+    reader.onload = function() {
+        var output = document.getElementById("imagenEdit");
+        output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+}
